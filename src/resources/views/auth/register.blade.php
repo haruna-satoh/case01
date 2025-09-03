@@ -2,7 +2,7 @@
     <div class="register__title">
         <h2>会員登録</h2>
     </div>
-    <form action="/register" method="post" class="form">
+    <form action="/register" method="post" class="form" novalidate>
         @csrf
         <div class="form__group">
             <div class="form__group--title">
@@ -52,7 +52,7 @@
                     <input type="password" name="password_confirmation">
                 </div>
                 <div class="form__error">
-                    @error('password')
+                    @error('password_confirmation')
                         {{ $message }}
                     @enderror
                 </div>
