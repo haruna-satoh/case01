@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/', [AuthController::class, 'index']);
+});
+
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
