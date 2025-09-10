@@ -19,13 +19,15 @@ class AuthController extends Controller
     }
 
     public function register(RegisterRequest $request) {
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
 
-        return redirect()->route('register.form')->with('success', '登録成功！');
+        Auth::login($user);
+
+        return redirect()->route('profile.edit');
     }
 
     public function login(LoginRequest $request) {

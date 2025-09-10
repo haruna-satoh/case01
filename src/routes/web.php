@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,5 @@ Route::get('/login', function (){
 Route::post('login', [AuthController::class, 'login']);
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
+
+Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
