@@ -32,8 +32,10 @@ Route::get('/login', function (){
     return view('auth.login');
 })->name('login');
 
-Route::post('login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
 
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
