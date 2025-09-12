@@ -38,4 +38,4 @@ Route::get('/', [ItemController::class, 'index'])->name('index');
 
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
-Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
