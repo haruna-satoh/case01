@@ -2,7 +2,7 @@
     <div class="edit__title">
         <h2>プロフィール設定</h2>
     </div>
-    <form action="/mypage/profile" method="post" enctype="multipart/form-data" class="form">
+    <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data" class="form">
         @csrf
         @method('patch')
         <div class="form__group">
