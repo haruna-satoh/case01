@@ -19,9 +19,10 @@ class CreateItemsTable extends Migration
             $table->string('category_id');
             $table->string('condition');
             $table->string('name');
-            $table->string('brand')->nullable;
+            $table->string('brand')->nullable();
             $table->string('explain');
             $table->integer('price');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
