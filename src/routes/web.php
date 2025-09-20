@@ -16,12 +16,10 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware('auth')->group(function () {
-    Route::get('/', [AuthController::class, 'index']);
+    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
@@ -35,7 +33,3 @@ Route::get('/login', function (){
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
-
-Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-
-Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
