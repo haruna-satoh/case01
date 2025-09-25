@@ -1,25 +1,29 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+@endsection
+
 @section('content')
-    <div class="flrama__flrama">
-        <div class="flrama__title">
-            <h3>おすすめ</h3>
-            <form action="">
-                @csrf
-                <button>マイリスト</button>
-            </form>
+    <div class="product-list">
+        <div class="product-list__title">
+            <a href="/" class="product-list__button {{ request()->query('tab') !== 'mylist' ? 'is-active' : '' }}">おすすめ</a>
+            <a href="/?tab=mylist" class="product-list__button {{ request()->query('tab') === 'mylist' ? 'is-active' : '' }}">マイリスト</a>
         </div>
         @if ($items->count() > 0)
-            @foreach ($items as $item)
-                <div class="flrama__content">
-                    <div class="flrama__content--img">
-                        <img src="{{ asset('images/' . $item->image) }}" alt="商品画像">
-                    </div>
-                    <div class="flrama__content--item">
+            <div class="product-list__content">
+                @foreach ($items as $item)
+                    <div class="product-list__content--item">
+                        <div class="product-list__content--img">
+                            <img src="{{ asset('images/' . $item->image) }}" alt="商品画像">
+                            @if ($item->purchases->isNotEmpty())
+                                <span class="sold-badge">Sold</span>
+                            @endif
+                        </div>
                         <p>{{  $item->name }}</p>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         @else
             <p>該当する商品はありません。</p>
         @endif
