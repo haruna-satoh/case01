@@ -30,3 +30,6 @@ Route::get('/login', function (){
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
+
+Route::get('/sell', [ItemController::class, 'create']);
+Route::post('/sell', [ItemController::class, 'store']);

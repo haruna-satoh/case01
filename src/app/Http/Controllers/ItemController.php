@@ -38,4 +38,8 @@ class ItemController extends Controller
 
         return view('items.index', compact('items', 'keyword', 'tab'));
     }
+
+    public function create() {
+        return view('items.sell');
+    }
 }
