@@ -79,6 +79,18 @@
                     <input type="checkbox" id="14" name="options[]" value="14">
                     <label for="14">ベビー・キッズ</label>
                 </div>
+                <div class="form__detail--title">
+                    <p>商品の状態</p>
+                </div>
+                <div class="form__detail--select">
+                    <select name="condition" id="">
+                        <option value="0">選択してください</option>
+                        <option value="1">良好</option>
+                        <option value="2">目立った汚れなし</option>
+                        <option value="3">やや汚れあり</option>
+                        <option value="4">状態が悪い</option>
+                    </select>
+                </div>
             </div>
         </form>
     </div>
