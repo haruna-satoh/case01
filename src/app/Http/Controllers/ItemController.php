@@ -20,7 +20,7 @@ class ItemController extends Controller
         if ($tab === 'mylist') {
             if (!auth()->check()) {
                 $items = collect();
-                return view ('index', compact('items', 'keyword', 'tab'));
+                return view ('items.index', compact('items', 'keyword', 'tab'));
             }
             $query->whereHas('likes',function ($q){
                 $q->where('user_id', auth()->id());
@@ -36,6 +36,6 @@ class ItemController extends Controller
 
         $items = $query->with('purchase')->get();
 
-        return view('index', compact('items', 'keyword', 'tab'));
+        return view('items.index', compact('items', 'keyword', 'tab'));
     }
 }

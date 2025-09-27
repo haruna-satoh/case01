@@ -16,7 +16,7 @@
             <h1 class="header__logo">COACHTECH</h1>
             <nav class="header__nav">
                 <div class="header__nav--search">
-                    <form action="{{ route('index') }}" method="get">
+                    <form action="{{ route('items.index') }}" method="get">
                         <input type="text" name="keyword" placeholder="なにをお探しですか？">
                     </form>
                 </div>
