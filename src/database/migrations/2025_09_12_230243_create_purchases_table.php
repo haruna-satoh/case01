@@ -18,7 +18,6 @@ class CreatePurchasesTable extends Migration
             $table->integer('user_id');
             $table->integer('item_id');
             $table->integer('quantity');//個数
-            $table->integer('price');//価格
             $table->timestamps();
         });
     }
