@@ -39,10 +39,27 @@
 
 .product-list__content--item {
     width: 200px;
+    position: relative;
+    display: inline-block;
 }
 
 .product-list__content--img img {
     width: 100%;
     height: auto;
     object-fit: cover;
+    display: block;
+}
+
+.sold-badge {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 20px;
+    width: 80%;
+    text-align: center;
 }
