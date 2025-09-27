@@ -18,18 +18,15 @@ use App\Http\Controllers\ProfileController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-
-Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
-
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('/login', function (){
     return view('auth.login');
 })->name('login');
-
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [ItemController::class, 'index'])->name('index');
