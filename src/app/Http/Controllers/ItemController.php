@@ -29,14 +29,13 @@ class ItemController extends Controller
             $query->whereHas('purchase');
 
         } else {
-            $query->whereHas('purchase');
             if (auth()->check()) {
             $query->where('user_id', '!=', auth()->id());
             }
         }
 
-        $items = $query->get();
+        $items = $query->with('purchase')->get();
 
-        return view('index', compact('items', 'keyword'));
+        return view('index', compact('items', 'keyword', 'tab'));
     }
 }
