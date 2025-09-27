@@ -16,7 +16,7 @@
                     <div class="product-list__content--item">
                         <div class="product-list__content--img">
                             <img src="{{ asset('images/' . $item->image) }}" alt="商品画像">
-                            @if ($item->purchases->isNotEmpty())
+                            @if ($item->purchase)
                                 <span class="sold-badge">Sold</span>
                             @endif
                         </div>
