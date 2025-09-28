@@ -113,6 +113,14 @@
                     <input type="text" name="brand">
                 </div>
             </div>
+            <div class="form__detail--explain">
+                <div class="form__detail--title">
+                    <p>商品の説明</p>
+                </div>
+                <div class="form__detail--textarea">
+                    <textarea name="explain" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
         </form>
     </div>
 @endsection
