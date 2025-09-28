@@ -20,9 +20,11 @@
             </div>
             <div class="form__detail">
                 <h3>商品の詳細</h3>
-                <div class="from__detail--title">
-                    <p>カテゴリー</p>
-                </div>
+            </div>
+            <div class="from__detail--title">
+                <p>カテゴリー</p>
+            </div>
+            <div class="form__detail--content">
                 <div class="form__detail--button">
                     <input type="checkbox" id="1" name="options[]" value="1">
                     <label for="1">ファッション</label>
@@ -90,6 +92,17 @@
                         <option value="3">やや汚れあり</option>
                         <option value="4">状態が悪い</option>
                     </select>
+                </div>
+            </div>
+            <div class="form__detail">
+                <h3>商品名と説明</h3>
+            </div>
+            <div class="form__detail--title">
+                <p>商品名</p>
+            </div>
+            <div class="form__detail--name">
+                <div class="form__detail--input">
+                    <input type="text" name="name">
                 </div>
             </div>
         </form>
