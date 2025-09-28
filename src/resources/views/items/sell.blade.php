@@ -121,6 +121,14 @@
                     <textarea name="explain" id="" cols="30" rows="10"></textarea>
                 </div>
             </div>
+            <div class="form__detail--price">
+                <div class="form__detail--title">
+                    <p>販売価格</p>
+                </div>
+                <div class="form__detail--input">
+                    <input type="text" name="price" placeholder="¥">
+                </div>
+            </div>
         </form>
     </div>
 @endsection
