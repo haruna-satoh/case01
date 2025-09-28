@@ -97,12 +97,20 @@
             <div class="form__detail">
                 <h3>商品名と説明</h3>
             </div>
-            <div class="form__detail--title">
-                <p>商品名</p>
-            </div>
             <div class="form__detail--name">
+                <div class="form__detail--title">
+                    <p>商品名</p>
+                </div>
                 <div class="form__detail--input">
                     <input type="text" name="name">
+                </div>
+            </div>
+            <div class="form__detail--brand">
+                <div class="form__detail--title">
+                    <p>ブランド名</p>
+                </div>
+                <div class="form__detail--input">
+                    <input type="text" name="brand">
                 </div>
             </div>
         </form>
