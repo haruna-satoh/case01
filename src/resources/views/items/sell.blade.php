@@ -132,11 +132,6 @@
                 <div class="form__detail--input">
                     <input type="text" name="brand">
                 </div>
-                <div class="form__error">
-                    @error('brand')
-                        {{ $message }}
-                    @enderror
-                </div>
             </div>
             <div class="form__detail--explain">
                 <div class="form__detail--title">
