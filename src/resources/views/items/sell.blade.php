@@ -18,6 +18,11 @@
                     画像を選択する
                 </button>
             </div>
+            <div class="from__error">
+                @error('image')
+                    {{ $message }}
+                @enderror
+            </div>
             <div class="form__detail">
                 <h3>商品の詳細</h3>
             </div>
@@ -81,6 +86,11 @@
                     <input type="checkbox" id="14" name="options[]" value="14">
                     <label for="14">ベビー・キッズ</label>
                 </div>
+                <div class="form__error">
+                    @error('category')
+                        {{ $message }}
+                    @enderror
+                </div>
                 <div class="form__detail--title">
                     <p>商品の状態</p>
                 </div>
@@ -93,6 +103,11 @@
                         <option value="状態が悪い">状態が悪い</option>
                     </select>
                 </div>
+                <div class="form__error">
+                    @error('condition')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div class="form__detail">
                 <h3>商品名と説明</h3>
@@ -104,6 +119,11 @@
                 <div class="form__detail--input">
                     <input type="text" name="name">
                 </div>
+                <div class="form__error">
+                    @error('name')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div class="form__detail--brand">
                 <div class="form__detail--title">
@@ -111,6 +131,11 @@
                 </div>
                 <div class="form__detail--input">
                     <input type="text" name="brand">
+                </div>
+                <div class="form__error">
+                    @error('brand')
+                        {{ $message }}
+                    @enderror
                 </div>
             </div>
             <div class="form__detail--explain">
@@ -120,6 +145,11 @@
                 <div class="form__detail--textarea">
                     <textarea name="explain" id="" cols="30" rows="10"></textarea>
                 </div>
+                <div class="form__error">
+                    @error('explain')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div class="form__detail--price">
                 <div class="form__detail--title">
@@ -127,6 +157,11 @@
                 </div>
                 <div class="form__detail--input">
                     <input type="text" name="price" placeholder="¥">
+                </div>
+                <div class="form__error">
+                    @error('price')
+                        {{ $message }}
+                    @enderror
                 </div>
             </div>
             <div class="form__button">
