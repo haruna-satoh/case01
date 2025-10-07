@@ -9,7 +9,7 @@
         <div class="sell__title">
             <h2>商品の出品</h2>
         </div>
-        <form action="/sell" method=post class="form">
+        <form action="{{ route('items.store') }}" method=post enctype="multipart/form-data" class="form">
             @csrf
             <div class="form__img">
                 <p>商品画像</p>
@@ -86,11 +86,11 @@
                 </div>
                 <div class="form__detail--select">
                     <select name="condition" id="">
-                        <option value="0">選択してください</option>
-                        <option value="1">良好</option>
-                        <option value="2">目立った汚れなし</option>
-                        <option value="3">やや汚れあり</option>
-                        <option value="4">状態が悪い</option>
+                        <option value="">選択してください</option>
+                        <option value="良好">良好</option>
+                        <option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
+                        <option value="やや傷や汚れあり">やや傷や汚れあり</option>
+                        <option value="状態が悪い">状態が悪い</option>
                     </select>
                 </div>
             </div>
