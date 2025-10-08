@@ -16,7 +16,6 @@ class ItemsTableSeeder extends Seeder
     {
         $param = [
             'user_id' => 1,
-            'category_id' => 1,
             'condition' => '良好',
             'name' => '腕時計',
             'brand' => 'Rolax',
@@ -27,7 +26,6 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => 2,
-            'category_id' => 2,
             'condition' => '目立った傷や汚れなし',
             'name' => 'HDD',
             'brand' => '西芝',
@@ -38,7 +36,6 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => 1,
-            'category_id' => 10,
             'condition' => 'やや傷や汚れあり',
             'name' => '玉ねぎ3束',
             'brand' => 'なし',
@@ -49,7 +46,6 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => 3,
-            'category_id' => 5,
             'condition' => '状態が悪い',
             'name' => '革靴',
             'explain' => 'クラシックなデザインの革靴',
@@ -59,7 +55,6 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => 4,
-            'category_id' => 2,
             'condition' => '良好',
             'name' => 'ノートPC',
             'explain' =>'高性能なノートパソコン',
@@ -69,7 +64,6 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => 5,
-            'category_id' => 2,
             'condition' => '目立った傷や汚れなし',
             'name' => 'マイク',
             'brand' => 'なし',
@@ -80,7 +74,6 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => 6,
-            'category_id' => 4,
             'condition' => 'やや傷や汚れあり',
             'name' => 'ショルダーバッグ',
             'explain' => 'おしゃれなショルダーバッグ',
@@ -90,7 +83,6 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => 7,
-            'category_id' => 10,
             'condition' => '状態が悪い',
             'name' => 'タンブラー',
             'brand' => 'なし',
@@ -101,7 +93,6 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => 8,
-            'category_id' => 10,
             'condition' => '良好',
             'name' => 'コーヒーミル',
             'brand' => 'Starbacks',
@@ -112,7 +103,6 @@ class ItemsTableSeeder extends Seeder
         DB::table('items')->insert($param);
         $param = [
             'user_id' => 9,
-            'category_id' => 4,
             'condition' => '目立った傷や汚れなし',
             'name' => 'メイクセット',
             'explain' => '便利なメイクアップセット',
