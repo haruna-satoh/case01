@@ -13,10 +13,11 @@
             @csrf
             <div class="form__img">
                 <p>商品画像</p>
-                <img src="{{ asset('images/') }}" alt="">
-                <button class="form__button">
+                <img src="" alt="">
+                <label class="form__img--button">
                     画像を選択する
-                </button>
+                    <input type="file" name="image" accept="image/jpeg,image/png">
+                </label>
             </div>
             <div class="from__error">
                 @error('image')
@@ -87,7 +88,7 @@
                     <label for="14">ベビー・キッズ</label>
                 </div>
                 <div class="form__error">
-                    @error('category')
+                    @error('options')
                         {{ $message }}
                     @enderror
                 </div>
