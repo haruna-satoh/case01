@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Purchase;
 Use App\Models\Like;
+use App\Models\category;
 
 class Item extends Model
 {
@@ -18,6 +19,7 @@ class Item extends Model
         'brand',
         'explain',
         'price',
+        'image',
     ];
 
     public function purchase() {
@@ -26,5 +28,9 @@ class Item extends Model
 
     public function likes() {
         return $this->hasMany(Like::class);
+    }
+
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'category_item');
     }
 }
