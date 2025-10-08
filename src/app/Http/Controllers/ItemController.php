@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Http\Requests\ExhibitionRequest;
 
 class ItemController extends Controller
 {
@@ -41,5 +42,22 @@ class ItemController extends Controller
 
     public function create() {
         return view('items.sell');
+    }
+
+    public function store(ExhibitionRequest $request) {
+        $validated = $request->validated();
+
+        $validated['user_id'] = auth()->id();
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images/items', 'public');
+            $validated['image'] = $path;
+        }
+
+        $item = Item::create($validated);
+
+        $item->categories()->attach($validated['options']);
+
+        return redirect()->route('items.index');
     }
 }
