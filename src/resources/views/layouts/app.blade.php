@@ -13,21 +13,34 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <h1 class="header__logo">COACHTECH</h1>
+            <h1 class="header__logo">
+                <a href="/">
+                    <img src="{{ asset('images/logo.svg') }}" alt="COACHTEÇHロゴ">
+                </a>
+            </h1>
             <nav class="header__nav">
                 <div class="header__nav--search">
                     <form action="{{ route('items.index') }}" method="get">
                         <input type="text" name="keyword" placeholder="なにをお探しですか？">
                     </form>
                 </div>
-                <form action="/logout" method="post">
-                    @csrf
+
+                @auth
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button class="nav__link">
+                            ログアウト
+                        </button>
+                    </form>
+                    <a href="/mypage" class="nav__link">マイページ</a>
+                    <a href="/sell" class="nav__button">出品</a>
+                @else
                     <button class="nav__link">
-                        ログアウト
+                        ログイン
                     </button>
-                </form>
-                <a href="/mypage" class="nav__link">マイページ</a>
-                <a href="/sell" class="nav__button">出品</a>
+                    <a href="/mypage" class="nav__link">マイページ</a>
+                    <a href="/sell" class="nav__button">出品</a>
+                @endauth
             </nav>
         </div>
     </header>
