@@ -31,4 +31,8 @@ class ProfileController extends Controller
 
         return redirect()->route('index');
     }
+
+    public function mypage() {
+        return view('profile.mypage');
+    }
 }
