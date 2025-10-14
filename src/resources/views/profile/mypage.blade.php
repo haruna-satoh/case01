@@ -5,13 +5,15 @@
 @endsection
 
 @section('content')
-    <div class="icon__img">
+<div class="mypage__user">
+    <div class="user__icon--img">
         <img src="" alt="">
     </div>
     <p class="user__name">
         ユーザー名
     </p>
-    <a href="/mypage/profile">
+    <a href="/mypage/profile" class="link__button">
         プロフィールを編集
     </a>
+</div>
 @endsection
