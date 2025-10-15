@@ -33,6 +33,13 @@ class ProfileController extends Controller
     }
 
     public function mypage() {
-        return view('profile.mypage');
+        $user = auth()->user();
+
+        $items = collect([
+            (object)['name' => 'テスト商品A', 'image' => 'sample1.jpg', 'purchase' => false],
+            (object)['name' => 'テスト商品B', 'image' => 'sample2.jpg', 'purchase' => true],
+        ]);
+
+        return view('profile.mypage', compact('items', 'user'));
     }
 }
