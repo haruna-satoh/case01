@@ -29,7 +29,7 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        return redirect()->route('index');
+        return redirect()->route('mypage');
     }
 
     public function mypage() {
