@@ -24,7 +24,8 @@
                     </div>
                 @endforeach
             </div>
-        @else
+            @else
             <p>該当する商品はありません。</p>
         @endif
+    </div>
 @endsection
