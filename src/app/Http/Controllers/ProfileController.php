@@ -11,17 +11,21 @@ class ProfileController extends Controller
     public function edit() {
         $user = auth()->user();
         $address = $user->address;
-        return view('profile.edit', compact('user'));
+        return view('profile.edit', compact('user', 'address'));
     }
 
     public function update(ProfileRequest $request) {
         $user = Auth::user();
 
-        $user->update($request->only([
-            'post_code',
-            'address',
-            'building',
-        ]));
+        $user->update([
+            'name' => $request->name,
+        ]);
+
+        if ($user->address) {
+            $user->address->update($request->only(['post_code', 'address', 'building']));
+        } else {
+            $user->address()->create($request->only(['post_code', 'address', 'building']));
+        }
 
         if ($request->hasFile('icon')) {
             $path = $request->file('icon')->store('icons', 'public');
