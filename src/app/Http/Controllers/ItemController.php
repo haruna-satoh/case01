@@ -50,7 +50,7 @@ class ItemController extends Controller
         $validated['user_id'] = auth()->id();
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('images/items', 'public');
+            $path = $request->file('image')->store('images', 'public');
             $validated['image'] = $path;
         }
 
