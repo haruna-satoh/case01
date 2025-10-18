@@ -35,59 +35,59 @@
             <div class="form__detail--content">
                 <div class="form__detail--buttons">
                     <div class="form__detail--button">
-                        <input type="checkbox" id="1" name="options[]" value="1">
+                        <input type="checkbox" id="1" name="options[]" value="1" {{ is_array(old('options')) && in_array(1, old('options')) ? 'checked' : '' }}>
                         <label for="1">ファッション</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="2" name="options[]" value="2">
+                        <input type="checkbox" id="2" name="options[]" value="2" {{ is_array(old('options')) && in_array(2, old('options')) ? 'checked' : '' }}>
                         <label for="2">家電</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="3" name="options[]" value="3">
+                        <input type="checkbox" id="3" name="options[]" value="3" {{ is_array(old('options')) && in_array(3, old('options')) ? 'checked' : '' }}>
                         <label for="3">インテリア</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="4" name="options[]" value="4">
+                        <input type="checkbox" id="4" name="options[]" value="4" {{ is_array(old('options')) && in_array(4, old('options')) ? 'checked' : '' }}>
                         <label for="4">レディース</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="5" name="options[]" value="5">
+                        <input type="checkbox" id="5" name="options[]" value="5" {{ is_array(old('options')) && in_array(5, old('options')) ? 'checked' : '' }}>
                         <label for="5">メンズ</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="6" name="options[]" value="6">
+                        <input type="checkbox" id="6" name="options[]" value="6" {{ is_array(old('options')) && in_array(6, old('options')) ? 'checked' : '' }}>
                         <label for="6">コスメ</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="7" name="options[]" value="7">
+                        <input type="checkbox" id="7" name="options[]" value="7" {{ is_array(old('options')) && in_array(7, old('options')) ? 'checked' : '' }}>
                         <label for="7">本</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="8" name="options[]" value="8">
+                        <input type="checkbox" id="8" name="options[]" value="8" {{ is_array(old('options')) && in_array(8, old('options')) ? 'checked' : '' }}>
                         <label for="8">ゲーム</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="9" name="options[]" value="9">
+                        <input type="checkbox" id="9" name="options[]" value="9" {{ is_array(old('options')) && in_array(9, old('options')) ? 'checked' : '' }}>
                         <label for="9">スポーツ</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="10" name="options[]" value="10">
+                        <input type="checkbox" id="10" name="options[]" value="10" {{ is_array(old('options')) && in_array(10, old('options')) ? 'checked' : '' }}>
                         <label for="10">キッチン</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="11" name="options[]" value="11">
+                        <input type="checkbox" id="11" name="options[]" value="11" {{ is_array(old('options')) && in_array(11, old('options')) ? 'checked' : '' }}>
                         <label for="11">ハンドメイド</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="12" name="options[]" value="12">
+                        <input type="checkbox" id="12" name="options[]" value="12" {{ is_array(old('options')) && in_array(12, old('options')) ? 'checked' : ''}}>
                         <label for="12">アクセサリー</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="13" name="options[]" value="13">
+                        <input type="checkbox" id="13" name="options[]" value="13" {{ is_array(old('options')) && in_array(13, old('options')) ? 'checked' : '' }}>
                         <label for="13">おもちゃ</label>
                     </div>
                     <div class="form__detail--button">
-                        <input type="checkbox" id="14" name="options[]" value="14">
+                        <input type="checkbox" id="14" name="options[]" value="14" {{ is_array(old('options')) && in_array(14, old('options')) ? 'checked' : '' }}>
                         <label for="14">ベビー・キッズ</label>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                     <p>商品名</p>
                 </div>
                 <div class="form__detail--input">
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="form__error">
                     @error('name')
@@ -135,7 +135,7 @@
                     <p>ブランド名</p>
                 </div>
                 <div class="form__detail--input">
-                    <input type="text" name="brand">
+                    <input type="text" name="brand" value="{{ old('brand') }}">
                 </div>
             </div>
             <div class="form__detail--explain">
@@ -143,7 +143,7 @@
                     <p>商品の説明</p>
                 </div>
                 <div class="form__detail--textarea">
-                    <textarea name="explain" id="" cols="30" rows="10"></textarea>
+                    <textarea name="explain" id="" cols="30" rows="10">{{ old('explain') }}</textarea>
                 </div>
                 <div class="form__error">
                     @error('explain')
@@ -156,7 +156,7 @@
                     <p>販売価格</p>
                 </div>
                 <div class="form__detail--input">
-                    <input type="text" name="price" placeholder="¥">
+                    <input type="text" name="price" placeholder="¥" value="{{ old('price') }}">
                 </div>
                 <div class="form__error">
                     @error('price')
