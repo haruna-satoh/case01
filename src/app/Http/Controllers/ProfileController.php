@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
+use App\Models\Item;
+use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -36,14 +38,20 @@ class ProfileController extends Controller
         return redirect()->route('mypage');
     }
 
-    public function mypage() {
+    public function mypage(Request $request) {
         $user = auth()->user();
+        $page = $request->query('page', 'sell');
 
-        $items = collect([
-            (object)['name' => 'テスト商品A', 'image' => 'sample1.jpg', 'purchase' => false],
-            (object)['name' => 'テスト商品B', 'image' => 'sample2.jpg', 'purchase' => true],
-        ]);
+        if ($page === 'sell') {
+            $items = Item::where('user_id', $user->id)->get();
+        } elseif ($page === 'buy') {
+            $items = Item::whereIn('id', function($query) use ($user) {
+                $query->select('item_id')->from('purchases')->where('user_id', $user->id);
+            })->get();
+        } else {
+            $items = collect();
+        }
 
-        return view('profile.mypage', compact('items', 'user'));
+        return view('profile.mypage', compact('items', 'user', 'page'));
     }
 }
