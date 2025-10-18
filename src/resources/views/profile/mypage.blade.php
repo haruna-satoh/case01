@@ -18,19 +18,19 @@
 </div>
 <div class="mypage-list">
         <div class="mypage-list__title">
-            <a href="/mypage?page=sell" class="mypage-list__button {{ request()->query('page') === 'sell' ? 'is-active' : '' }}">出品した商品</a>
-            <a href="/mypage?page=buy" class="mypage-list__button {{ request()->query('page') === 'buy' ? 'is-active' : '' }}">購入した商品</a>
+            <a href="/mypage?page=sell" class="mypage-list__button {{ $page === 'sell' ? 'is-active' : '' }}">出品した商品</a>
+            <a href="/mypage?page=buy" class="mypage-list__button {{ $page === 'buy' ? 'is-active' : '' }}">購入した商品</a>
         </div>
         @if ($items->count() > 0)
             <div class="mypage-list__content">
-                @foreach ($items as $item)
-                    <div class="mypage-list__content--item">
-                        <div class="mypage-list__content--img">
-                            <img src="{{ asset('images/' . $item->image) }}" alt="商品画像">
-                        </div>
-                        <p>{{  $item->name }}</p>
+                @forelse ($items as $item)
+                    <div class="item-code">
+                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                        <p>{{ $item->name }}</p>
                     </div>
-                @endforeach
+                @empty
+                    <p>商品がありません。</p>
+                @endforelse
             </div>
         @endif
     @endsection
