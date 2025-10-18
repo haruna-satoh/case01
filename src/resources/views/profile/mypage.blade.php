@@ -18,8 +18,8 @@
 </div>
 <div class="mypage-list">
         <div class="mypage-list__title">
-            <a href="/" class="mypage-list__button {{ request()->query('tab') !== 'mylist' ? 'is-active' : '' }}">出品した商品</a>
-            <a href="/?tab=mylist" class="mypage-list__button {{ request()->query('tab') === 'mylist' ? 'is-active' : '' }}">購入した商品</a>
+            <a href="/mypage?page=sell" class="mypage-list__button {{ request()->query('page') === 'sell' ? 'is-active' : '' }}">出品した商品</a>
+            <a href="/mypage?page=buy" class="mypage-list__button {{ request()->query('page') === 'buy' ? 'is-active' : '' }}">購入した商品</a>
         </div>
         @if ($items->count() > 0)
             <div class="mypage-list__content">
