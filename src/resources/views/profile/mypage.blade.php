@@ -23,14 +23,14 @@
         </div>
         @if ($items->count() > 0)
             <div class="mypage-list__content">
-                @forelse ($items as $item)
-                    <div class="item-code">
-                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                @foreach ($items as $item)
+                    <div class="mypage-list__content--item">
+                        <div class="item-code">
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                        </div>
                         <p>{{ $item->name }}</p>
                     </div>
-                @empty
-                    <p>商品がありません。</p>
-                @endforelse
+                @endforeach
             </div>
         @endif
     @endsection
