@@ -14,13 +14,15 @@
             <div class="product-list__content">
                 @foreach ($items as $item)
                     <div class="product-list__content--item">
-                        <div class="product-list__content--img">
-                            <img src="{{ asset('images/' . $item->image) }}" alt="商品画像">
-                            @if ($item->purchase)
-                                <span class="sold-badge">Sold</span>
-                            @endif
-                        </div>
-                        <p>{{  $item->name }}</p>
+                        <a href="{{ route('item.show', ['item_id' => $item->id]) }}" class="product-link">
+                            <div class="product-list__content--img">
+                                <img src="{{ asset('images/' . $item->image) }}" alt="商品画像">
+                                @if ($item->purchase)
+                                    <span class="sold-badge">Sold</span>
+                                @endif
+                            </div>
+                            <p>{{  $item->name }}</p>
+                        </a>
                     </div>
                 @endforeach
             </div>
