@@ -34,3 +34,5 @@ Route::get('/login', function (){
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
+
+Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
