@@ -28,4 +28,23 @@ class RegisterTest extends TestCase
             session('errors')->first('name')
         );
     }
+
+    /** @test */
+    public function メールアドレスが未入力の場合はバリデーションエラーになる() {
+        $formData = [
+            'name' => 'テスト太郎',
+            'email' => '',
+            'password' => 'password123',
+            'password_confirmation' => 'password123',
+        ];
+
+        $response = $this->post('/register', $formData);
+
+        $response->assertSessionHasErrors(['email']);
+
+        $this->assertStringContainsString(
+            'メールアドレスを入力してください',
+            session('errors')->first('email')
+        );
+    }
 }
