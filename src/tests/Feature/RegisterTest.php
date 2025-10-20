@@ -104,4 +104,23 @@ class RegisterTest extends TestCase
             session('errors')->first('password')
         );
     }
+
+    /** @test */
+    public function 会員情報が登録されプロフィール設定画面に遷移する() {
+        $formData = [
+            'name' => 'テスト太郎',
+            'email' => 'test@example.com',
+            'password' => 'password123',
+            'password_confirmation' => 'password123',
+        ];
+
+        $response = $this->post('/register', $formData);
+
+        $this->assertDatabaseHas('users', [
+            'name' => 'テスト太郎',
+            'email' => 'test@example.com',
+        ]);
+
+        $response->assertRedirect('/mypage/profile');
+    }
 }
