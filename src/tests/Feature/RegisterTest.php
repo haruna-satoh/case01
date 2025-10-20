@@ -66,4 +66,23 @@ class RegisterTest extends TestCase
             session('errors')->first('password')
         );
     }
+
+    /** @test */
+    public function パスワードが7文字以下の場合はバリデーションエラーになる() {
+        $formData = [
+            'name' => 'テスト太郎',
+            'email' => 'test@example.com',
+            'password' => 'pass12',
+            'password_confirmation' => 'pass12',
+        ];
+
+        $response = $this->post('/register', $formData);
+
+        $response->assertSessionHasErrors(['password']);
+
+        $this->assertStringContainsString(
+            'パスワードは8文字以上で入力してください',
+            session('errors')->first('password')
+        );
+    }
 }
