@@ -85,4 +85,23 @@ class RegisterTest extends TestCase
             session('errors')->first('password')
         );
     }
+
+    /** @test */
+    public function パスワードが一致しない場合はバリデーションエラーになる() {
+        $formData = [
+            'name' => 'テスト太郎',
+            'email' => 'test@example.com',
+            'password' => 'password123',
+            'password_confirmation' => 'password12',
+        ];
+
+        $response = $this->post('/register', $formData);
+
+        $response->assertSessionHasErrors(['password']);
+
+        $this->assertStringContainsString(
+            'パスワードと一致しません',
+            session('errors')->first('password')
+        );
+    }
 }
