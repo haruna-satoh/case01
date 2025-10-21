@@ -43,4 +43,19 @@ class LoginTest extends TestCase
             session('errors')->first('password')
         );
     }
+
+    /** @test */
+    public function 入力情報が間違ってる場合はバリデーションエラーになる() {
+        $response = $this->post('/login', [
+            'email' => 'no_user@example.com',
+            'password' => 'password123',
+        ]);
+
+        $response->assertSessionHasErrors(['login']);
+
+        $this->assertStringContainsString(
+            'ログイン情報が登録されていません',
+            session('errors')->first('login')
+        );
+    }
 }
