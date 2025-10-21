@@ -26,4 +26,20 @@ class LoginTest extends TestCase
             session('errors')->first('email')
         );
     }
+
+    public function パスワードが未入力の場合はバリデーションエラーになる() {
+        $formData = [
+            'email' => 'test@example.com',
+            'password' => '',
+        ];
+
+        $response = $this->post('/login', $formData);
+
+        $response->assertSessionHasErrors(['password']);
+
+        $this->assertStringContainsString(
+            'パスワードを入力してください',
+            session('password')->first('password')
+        );
+    }
 }
