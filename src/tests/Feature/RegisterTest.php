@@ -10,8 +10,7 @@ class RegisterTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function 名前が未入力の場合はバリデーションエラーになる() {
+    public function test_名前が未入力の場合はバリデーションエラーになる() {
         $formData = [
             'name' => '',
             'email' => 'test@example.com',
@@ -29,8 +28,7 @@ class RegisterTest extends TestCase
         );
     }
 
-    /** @test */
-    public function メールアドレスが未入力の場合はバリデーションエラーになる() {
+    public function test_メールアドレスが未入力の場合はバリデーションエラーになる() {
         $formData = [
             'name' => 'テスト太郎',
             'email' => '',
@@ -48,8 +46,7 @@ class RegisterTest extends TestCase
         );
     }
 
-    /** @test */
-    public function パスワードが未入力の場合はバリデーションエラーになる() {
+    public function test_パスワードが未入力の場合はバリデーションエラーになる() {
         $formData = [
             'name' => 'テスト太郎',
             'email' => 'test@example.com',
@@ -67,8 +64,7 @@ class RegisterTest extends TestCase
         );
     }
 
-    /** @test */
-    public function パスワードが7文字以下の場合はバリデーションエラーになる() {
+    public function test_パスワードが7文字以下の場合はバリデーションエラーになる() {
         $formData = [
             'name' => 'テスト太郎',
             'email' => 'test@example.com',
@@ -86,8 +82,7 @@ class RegisterTest extends TestCase
         );
     }
 
-    /** @test */
-    public function パスワードが一致しない場合はバリデーションエラーになる() {
+    public function test_パスワードが一致しない場合はバリデーションエラーになる() {
         $formData = [
             'name' => 'テスト太郎',
             'email' => 'test@example.com',
@@ -105,8 +100,7 @@ class RegisterTest extends TestCase
         );
     }
 
-    /** @test */
-    public function 会員情報が登録されプロフィール設定画面に遷移する() {
+    public function test_会員情報が登録されプロフィール設定画面に遷移する() {
         $formData = [
             'name' => 'テスト太郎',
             'email' => 'test@example.com',

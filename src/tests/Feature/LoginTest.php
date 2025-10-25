@@ -11,8 +11,7 @@ class LoginTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function メールアドレスが未入力の場合はバリデーションエラーになる() {
+    public function test_メールアドレスが未入力の場合はバリデーションエラーになる() {
         $formData = [
             'email' => '',
             'password' => 'password123',
@@ -28,8 +27,7 @@ class LoginTest extends TestCase
         );
     }
 
-    /** @test */
-    public function パスワードが未入力の場合はバリデーションエラーになる() {
+    public function test_パスワードが未入力の場合はバリデーションエラーになる() {
         $formData = [
             'email' => 'test@example.com',
             'password' => '',
@@ -45,8 +43,7 @@ class LoginTest extends TestCase
         );
     }
 
-    /** @test */
-    public function 入力情報が間違ってる場合はバリデーションエラーになる() {
+    public function test_入力情報が間違ってる場合はバリデーションエラーになる() {
         $response = $this->post('/login', [
             'email' => 'no_user@example.com',
             'password' => 'password123',
@@ -60,8 +57,7 @@ class LoginTest extends TestCase
         );
     }
 
-    /** @test */
-    public function 正しい情報を入力するとログインできる() {
+    public function test_正しい情報を入力するとログインできる() {
         $user = User::factory()->create([
             'email' => 'test@example.com',
             'password' => bcrypt('password123'),
