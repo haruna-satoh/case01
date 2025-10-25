@@ -37,5 +37,25 @@ php コンテナ内で実行
 docker compose exec php bash
 composer install
 php artisan key:generate
-php artisan migrate
+php artisan migrate --seed
 ```
+
+## ER図
+アプリ内で使用しているテーブル構成を示したER図です。
+
+## テスト実行方法
+php コンテナ内で実行
+```bash
+docker compose exec php bash
+php artisan test
+```
+テスト結果がすべての項目でPASSであれば、基本動作が正常に確認できます。
+
+## URL
+
+- [http://localhost](http://localhost)
+    →トップページが表示されます
+- [http://localhost/register](http://localhost/register)
+    →会員登録ページが表示されます
+- [http://localhost:8080/](http://localhost:8080/)
+    →phpMyAdminが表示され、DBを確認できます
