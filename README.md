@@ -41,7 +41,7 @@ php artisan migrate --seed
 ```
 
 ## ER図
-![ER図](flra-market.dio\ (1).png)
+![ER図](flra-market.dio.png)
 アプリ内で使用しているテーブル構成を示したER図です。
 
 ## テスト実行方法
