@@ -45,13 +45,25 @@ php artisan migrate --seed
 
 ![ER図](flra-market.png)
 
-## テスト実行方法
+## テスト手順
+MySQL コンテナ内で実行
+```bash
+docker compose exec mysql bash
+mysql -u root -p
+root
+CREATE DATABASE demo_test;
+exit;
+exit
+```
+※パスワードは.env.testingに記載しているものを使用してください
+
 php コンテナ内で実行
 ```bash
 docker compose exec php bash
+php artisan migrate --env=testing
 php artisan test
 ```
-テスト結果がすべての項目でPASSであれば、基本動作が正常に確認できます。
+テスト結果がすべての項目でPASSであれば、基本動作が正常であると確認できます。
 
 ## URL
 
