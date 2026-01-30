@@ -35,11 +35,15 @@
                     <a href="/mypage" class="nav__link">マイページ</a>
                     <a href="/sell" class="nav__button">出品</a>
                 @else
-                    <button class="nav__link">
+                    <a href="/login" class="nav__link">
                         ログイン
-                    </button>
-                    <a href="/mypage" class="nav__link">マイページ</a>
-                    <a href="/sell" class="nav__button">出品</a>
+                    </a>
+                    <a href="/mypage" class="nav__link">
+                        マイページ
+                    </a>
+                    <a href="/sell" class="nav__button">
+                        出品
+                    </a>
                 @endauth
             </nav>
         </div>
