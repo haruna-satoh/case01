@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <a href="{{ route('purchase.create', $item) }}" class="purchase-button">
+        <a href="{{ route('purchase.create', $item) }}" class="buy-button">
             購入手続きへ
         </a>
 
