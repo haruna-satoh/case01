@@ -25,7 +25,7 @@
             <div class="mypage-list__content">
                 @foreach ($items as $item)
                     <div class="mypage-list__content--item">
-                        <a href="{{ route('item.show', ['item_id' => $item->id]) }}">
+                        <a href="{{ route('item.show', $item->id) }}">
                             <div class="item-code">
                                 <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
                             </div>
