@@ -61,8 +61,9 @@ class ItemController extends Controller
         return redirect()->route('items.index');
     }
 
-    public function show($id){
-        $item = Item::with('categories', 'user')->findOrFail($id);
+    public function show(Item $item){
+        $item->load(['categories', 'user', 'comments.user'])->loadCount('comments');
+
         return view('items.show', compact('item'));
     }
 }
