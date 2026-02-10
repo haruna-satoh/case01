@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/sell', [ItemController::class, 'create'])->name('items.create');
     Route::post('/sell', [ItemController::class, 'store'])->name('items.store');
+    Route::post('/items/{item}/comments', [CommentController::class, 'store']);
 });
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
@@ -35,4 +37,4 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
 
-Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
+Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
