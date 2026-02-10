@@ -14,7 +14,7 @@
             <div class="product-list__content">
                 @foreach ($items as $item)
                     <div class="product-list__content--item">
-                        <a href="{{ route('item.show', ['item_id' => $item->id]) }}" class="product-link">
+                        <a href="{{ route('item.show', $item->id) }}" class="product-link">
                             <div class="product-list__content--img">
                                 <img src="{{ asset('images/' . $item->image) }}" alt="商品画像">
                                 @if ($item->purchase)
