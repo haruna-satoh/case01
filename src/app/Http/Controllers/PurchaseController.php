@@ -25,6 +25,6 @@ class PurchaseController extends Controller
             ]);
         }
 
-        return redirect()->route('item.show', $item);
+        return redirect()->route('items.index', $item);
     }
 }
