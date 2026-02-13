@@ -57,6 +57,10 @@
     margin-bottom: 16px;
 }
 
+.item-icons form {
+    margin: 0;
+}
+
 .icon {
     display: flex;
     flex-direction: column;
@@ -70,6 +74,23 @@
 
 .icon:hover {
     transform: scale(1.1);
+}
+
+.icon--like {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+.icon--like.is-liked {
+    color: red;
 }
 
 .icon--like:hover {
@@ -88,6 +109,7 @@
     font-size: 12px;
     margin-top: 4px;
     color: #666;
+    line-height: 1;
 }
 
 .icon:hover span {
