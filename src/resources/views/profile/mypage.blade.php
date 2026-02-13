@@ -27,7 +27,7 @@
                     <div class="mypage-list__content--item">
                         <a href="{{ route('item.show', $item->id) }}">
                             <div class="item-code">
-                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                                <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}">
                             </div>
                             <p>{{ $item->name }}</p>
                         </a>
