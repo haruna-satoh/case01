@@ -27,7 +27,7 @@ class ItemController extends Controller
                 $q->where('user_id', auth()->id());
             });
 
-            $query->whereHas('purchase');
+            $query->whereHas('purchases');
 
         } else {
             if (auth()->check()) {
@@ -35,7 +35,7 @@ class ItemController extends Controller
             }
         }
 
-        $items = $query->with('purchase')->get();
+        $items = $query->withCount('purchases')->get();
 
         return view('items.index', compact('items', 'keyword', 'tab'));
     }
@@ -67,6 +67,9 @@ class ItemController extends Controller
         $isLiked = auth()->check()
             ? $item->likedUsers()->where('user_id', auth()->id())->exists() : false;
 
-        return view('items.show', compact('item', 'isLiked'));
+        $isPurchased = auth()->check()
+            ? $item->purchases()->where('user_id', auth()->id())->exists() : false;
+
+        return view('items.show', compact('item', 'isLiked', 'isPurchased'));
     }
 }

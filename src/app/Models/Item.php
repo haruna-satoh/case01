@@ -22,8 +22,8 @@ class Item extends Model
         'image',
     ];
 
-    public function purchase() {
-        return $this->hasOne(Purchase::class);
+    public function purchases() {
+        return $this->hasMany(Purchase::class);
     }
 
     public function likes() {
