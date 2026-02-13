@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/sell', [ItemController::class, 'store'])->name('items.store');
     Route::post('/items/{item}/comments', [CommentController::class, 'store']);
     Route::get('/purchase/{item}', [PurchaseController::class, 'create'])->name('purchase.create');
+    Route::post('/purchase/{item}', [PurchaseController::class, 'store'])->name('purchase.store');
+    Route::post('/items/{item}/like', [LikeController::class, 'toggle'])->name('items.like');
 });
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
