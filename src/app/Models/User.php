@@ -46,4 +46,8 @@ class User extends Authenticatable
     public function address() {
         return $this->hasOne(Address::class);
     }
+
+    public function likedItems() {
+        return $this->belongsToMany(Item::class, 'likes');
+    }
 }

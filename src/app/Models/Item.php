@@ -41,4 +41,8 @@ class Item extends Model
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+
+    public function likedUsers() {
+        return $this->belongsToMany(User::class, 'likes');
+    }
 }
