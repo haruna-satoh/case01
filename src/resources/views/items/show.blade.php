@@ -19,10 +19,14 @@
         <p class="item-price">¥{{ number_format($item->price) }}<span>(税込)</span></p>
 
         <div class="item-icons">
-            <div class="icon icon--like">
-                ♡
-                <span>3</span>
-            </div>
+            <form action="{{ route('items.like', $item) }}" method="post">
+                @csrf
+                <button class="icon icon--like {{ $isLiked ? 'is-liked' : '' }}">
+                    ♡
+                    <span>{{ $item->liked_users_count }}</span>
+                </button>
+            </form>
+
             <div class="icon icon--comment">
                 💬
                 <span>{{ $item->comments_count }} </span>
