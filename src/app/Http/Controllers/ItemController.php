@@ -62,8 +62,11 @@ class ItemController extends Controller
     }
 
     public function show(Item $item){
-        $item->load(['categories', 'user', 'comments.user'])->loadCount('comments');
+        $item->load(['categories', 'user', 'comments.user'])->loadCount('comments', 'likedUsers');
 
-        return view('items.show', compact('item'));
+        $isLiked = auth()->check()
+            ? $item->likedUsers()->where('user_id', auth()->id())->exists() : false;
+
+        return view('items.show', compact('item', 'isLiked'));
     }
 }
