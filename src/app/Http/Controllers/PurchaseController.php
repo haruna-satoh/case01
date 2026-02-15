@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Purchase;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 
 class PurchaseController extends Controller
 {
@@ -12,19 +14,42 @@ class PurchaseController extends Controller
         return view('purchase.create', compact('item'));
     }
 
-    public function store(Item $item) {
-        $user = auth()->user();
+    public function store(Request $request, Item $item) {
+        Stripe::setApikey(config('services.stripe.secret'));
 
-        $exists = Purchase::where('user_id', $user->id)->where('item_id', $item->id)->exists();
-
-        if (! $exists) {
-            Purchase::create([
-                'user_id' => $user->id,
-                'item_id' => $item->id,
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => [
+                        'name' => $item->name,
+                    ],
+                    'unit_amount' => $item->price,
+                ],
                 'quantity' => 1,
-            ]);
-        }
+            ]],
+            'mode' => 'payment',
 
-        return redirect()->route('items.index', $item);
+            'success_url' => route('purchase.success', $item),
+
+            'cancel_url' => route('purchase.cancel', $item),
+        ]);
+
+        return redirect($session->url);
+    }
+
+    public function success(Item $item) {
+        Purchase::create([
+            'user_id' => auth()->id(),
+            'item_id' => $item->id,
+            'quantity' => 1,
+        ]);
+
+        return redirect()->route('items.index')->with('success', '購入が完了しました');
+    }
+
+    public function cancel(Item $item) {
+        return redirect()->route('item.show', $item)->with('error', '決済がキャンセルされました');
     }
 }

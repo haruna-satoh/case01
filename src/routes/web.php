@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/items/{item}/comments', [CommentController::class, 'store']);
     Route::get('/purchase/{item}', [PurchaseController::class, 'create'])->name('purchase.create');
     Route::post('/purchase/{item}', [PurchaseController::class, 'store'])->name('purchase.store');
+    Route::get('/purchase/{item}/success', [PurchaseController::class, 'success'])->name('purchase.success');
+    Route::get('/purchase/{item}/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
     Route::post('/items/{item}/like', [LikeController::class, 'toggle'])->name('items.like');
 });
 
