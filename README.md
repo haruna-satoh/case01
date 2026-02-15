@@ -40,6 +40,19 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
+## Stripe設定
+
+1. https://dashboard.stripe.com/ にログイン
+2. Developers(開発者) → API keys
+3. テストキーを取得
+4. .env に設定
+
+STRIPE_KEY=取得した公開キー
+STRIPE_SECRET=取得した秘密キー
+
+*テストモードを使用しています
+
+
 ## ER図
 アプリ内で使用しているテーブル構成を示したER図です。
 
