@@ -17,42 +17,53 @@
 
         <hr>
 
-        <div class="purchase-section">
-            <label for="">支払い方法</label>
-            <select name="payment_method" id="">
-                <option value="">選択してください</option>
-                <option value="convenience">コンビニ払い</option>
-                <option value="card">カード払い</option>
-            </select>
-        </div>
-
-        <hr>
-
-        <div class="purchase-section">
-            <div class="purchase-section__header">
-                <label for="">配送先</label>
-                <a href="#">変更する</a>
-            </div>
-            <p>〒　XXX-YYYY</p>
-            <p>ここには住所が入ります</p>
-        </div>
-    </div>
-
-    <div class="purchase__right">
-        <div class="purchase-summary">
-            <div class="purchase-summary__row">
-                <span>商品代金</span>
-                <span>¥{{ number_format($item->price) }}</span>
-            </div>
-            <div class="purchase-summary__row">
-                <span>支払い方法</span>
-                <span>コンビニ払い</span>
-            </div>
-        </div>
-
-        <form action="{{ route('purchase.store', $item) }}" method="post">
+        <form action="{{ route('purchase.create', $item) }}" method="get">
             @csrf
-            <button class="purchase-button">購入する</button>
+            <div class="purchase-section">
+                <label for="">支払い方法</label>
+                <select name="payment_method" onchange="this.form.submit()" id="">
+                    <option value="">選択してください</option>
+                    <option value="convenience" {{ ($method ?? '') === 'convenience' ? 'selected' : '' }}>コンビニ払い</option>
+                    <option value="card" {{ ($method ?? '') === 'card' ? 'selected' : '' }}>カード支払い</option>
+                </select>
+            </div>
+        </form>
+
+            <hr>
+
+            <div class="purchase-section">
+                <div class="purchase-section__header">
+                    <label for="">配送先</label>
+                    <a href="#">変更する</a>
+                </div>
+                <p>〒　XXX-YYYY</p>
+                <p>ここには住所が入ります</p>
+            </div>
+        </div>
+
+        <div class="purchase__right">
+            <div class="purchase-summary">
+                <div class="purchase-summary__row">
+                    <span>商品代金</span>
+                    <span>¥{{ number_format($item->price) }}</span>
+                </div>
+                <div class="purchase-summary__row">
+                    <span>支払い方法</span>
+                    <span>
+                    @if($method === 'card')
+                        カード支払い
+                    @elseif($method === 'convenience')
+                        コンビニ払い
+                    @else
+                        未選択
+                    @endif
+                    </span>
+                </div>
+            </div>
+            <form action="{{ route('purchase.store', $item) }}" method="post">
+                @csrf
+                <input type="hidden" name="payment_method" value="{{ $method }}">
+                <button class="purchase-button">購入する</button>
         </form>
     </div>
 </div>

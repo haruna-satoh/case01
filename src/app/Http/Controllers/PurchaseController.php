@@ -10,15 +10,23 @@ use Stripe\Checkout\Session;
 
 class PurchaseController extends Controller
 {
-    public function create(Item $item) {
-        return view('purchase.create', compact('item'));
+    public function create(Request $request, Item $item) {
+        $method = $request->payment_method;
+        return view('purchase.create', compact('item', 'method'));
     }
 
     public function store(Request $request, Item $item) {
-        Stripe::setApikey(config('services.stripe.secret'));
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $method = $request->input('payment_method');
+
+        $paymentMethods = ['card'];
+        if ($method === 'convenience') {
+            $paymentMethods = ['konbini'];
+        }
 
         $session = Session::create([
-            'payment_method_types' => ['card'],
+            'payment_method_types' => $paymentMethods,
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'jpy',
