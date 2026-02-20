@@ -39,7 +39,7 @@ class PurchaseController extends Controller
             ]],
             'mode' => 'payment',
 
-            'success_url' => route('purchase.success', $item),
+            'success_url' => route('purchase.success',$item) . '?session_id={CHECKOUT_SESSION_ID}',
 
             'cancel_url' => route('purchase.cancel', $item),
         ]);
@@ -47,12 +47,18 @@ class PurchaseController extends Controller
         return redirect($session->url);
     }
 
-    public function success(Item $item) {
-        Purchase::create([
-            'user_id' => auth()->id(),
-            'item_id' => $item->id,
-            'quantity' => 1,
-        ]);
+    public function success(Request $request, Item $item) {
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $session = Session::retrieve($request->session_id);
+
+        if ($session->payment_status === 'paid') {
+            Purchase::create([
+                'user_id' => auth()->id(),
+                'item_id' => $item->id,
+                'quantity' => 1,
+            ]);
+        }
 
         return redirect()->route('items.index')->with('success', '購入が完了しました');
     }
