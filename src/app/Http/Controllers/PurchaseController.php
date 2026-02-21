@@ -12,7 +12,9 @@ class PurchaseController extends Controller
 {
     public function create(Request $request, Item $item) {
         $method = $request->payment_method;
-        return view('purchase.create', compact('item', 'method'));
+        $user = auth()->user();
+        $address = $user->address;
+        return view('purchase.create', compact('item', 'method', 'user'));
     }
 
     public function store(Request $request, Item $item) {
