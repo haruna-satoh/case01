@@ -31,13 +31,19 @@
 
             <hr>
 
-            <div class="purchase-section">
+            <div class="purchase-section purchase-section--border">
                 <div class="purchase-section__header">
                     <label for="">配送先</label>
                     <a href="#">変更する</a>
                 </div>
-                <p>〒　XXX-YYYY</p>
-                <p>ここには住所が入ります</p>
+                @php $address = $user->address; @endphp
+
+                <p>〒 {{ $address->post_code ?? ''}}</p>
+                <p>{{ $address->address ?? '' }}
+                    @if(!empty($address->building))
+                        {{ $address->building }}
+                    @endif
+                </p>
             </div>
         </div>
 
