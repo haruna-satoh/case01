@@ -34,7 +34,7 @@
             <div class="purchase-section purchase-section--border">
                 <div class="purchase-section__header">
                     <label for="">配送先</label>
-                    <a href="#">変更する</a>
+                    <a href="{{ route('address.edit', $item) }}">変更する</a>
                 </div>
                 @php $address = $user->address; @endphp
 
