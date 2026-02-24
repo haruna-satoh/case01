@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\AddressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/{item}/success', [PurchaseController::class, 'success'])->name('purchase.success');
     Route::get('/purchase/{item}/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
     Route::post('/items/{item}/like', [LikeController::class, 'toggle'])->name('items.like');
+    Route::get('/purchase/address/{item}', [AddressController::class, 'edit'])->name('address.edit');
+    Route::post('/address/update', [AddressController::class, 'update'])->name('address.update');
 });
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
